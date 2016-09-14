@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>:: SENSUL ::</title>
+    <link rel="shortcut icon" src="app/img/logo.png">
+    <link rel="mask-icon" src="app/img/logo.png">
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="app/css/index.css">
+  </head>
+  <body ng-controller="ctrl">
+    <div class="ng-cloak container-fluid">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="panel panel-default">
+            <div class="panel-body text-body">{{sensor.t}}<span>ºC</span></div>
+            <div class="panel-footer text-footer">TEMPERATURA</div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="panel panel-default">
+            <div class="panel-body text-body">{{sensor.h}}<span>%</span></div>
+            <div class="panel-footer text-footer">UMIDADE</div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="panel panel-default">
+            <div class="panel-body text-body">{{sensor.p}}<span>mbar</span></div>
+            <div class="panel-footer text-footer">PRESSÃO</div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="panel panel-default">
+            <div class="panel-body text-center">
+              <button class="btn btn-success btn-lg" ng-show="itsOn(config.ventiladorMAC)" ng-click="onAtuadorClick(config.ventiladorMAC, config.onStatus)">LIGAR</button>
+              <button class="btn btn-danger btn-lg" ng-show="!itsOn(config.ventiladorMAC)" ng-click="onAtuadorClick(config.ventiladorMAC, config.offStatus)">DESLIGAR</button>
+            </div>
+            <div class="panel-footer text-footer">VENTILADOR</div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="panel panel-default">
+            <div class="panel-body text-center">
+              <button class="btn btn-success btn-lg" ng-show="itsOn(config.bombaMAC)" ng-click="onAtuadorClick(config.bombaMAC, config.onStatus)">LIGAR</button>
+              <button class="btn btn-danger btn-lg" ng-show="!itsOn(config.bombaMAC)" ng-click="onAtuadorClick(config.bombaMAC, config.offStatus)">DESLIGAR</button>
+            </div>
+            <div class="panel-footer text-footer">BOMBA</div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="panel panel-default">
+            <div class="panel-body text-center">
+              <button class="btn btn-success btn-lg" ng-show="itsOn(config.iluminacaoMAC)" ng-click="onAtuadorClick(config.iluminacaoMAC, config.onStatus)">LIGAR</button>
+              <button class="btn btn-danger btn-lg" ng-show="!itsOn(config.iluminacaoMAC)" ng-click="onAtuadorClick(config.iluminacaoMAC, config.offStatus)">DESLIGAR</button>
+            </div>
+            <div class="panel-footer text-footer">ILUMINAÇÃO</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="vendor/angularjs/js/angular.min.js"></script>
+    <script src="vendor/mqtt/js/mqtt.js"></script>
+    <script src="vendor/angularjs/js/angular-mqtt.js"></script>
+    <script src="app/js/index.js"></script>
+  </body>
+</html>

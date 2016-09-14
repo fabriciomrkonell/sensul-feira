@@ -1,0 +1,15 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.text-footer {
+	text-align: center;
+}
+
+.text-body {
+	text-align: center;
+}
+
+.text-body span {
+	font-size: 30px;
+}
