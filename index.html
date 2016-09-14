@@ -34,8 +34,8 @@
         <div class="col-sm-4">
           <div class="panel panel-default">
             <div class="panel-body text-center">
-              <button class="btn btn-success btn-lg" ng-show="itsOn(config.ventiladorMAC)" ng-click="onAtuadorClick(config.ventiladorMAC, config.onStatus)">LIGAR</button>
-              <button class="btn btn-danger btn-lg" ng-show="!itsOn(config.ventiladorMAC)" ng-click="onAtuadorClick(config.ventiladorMAC, config.offStatus)">DESLIGAR</button>
+              <button class="btn btn-success btn-lg" ng-show="!itsOn(config.ventiladorMAC)" ng-click="onAtuadorClick(config.ventiladorMAC, config.onStatus)">LIGAR</button>
+              <button class="btn btn-danger btn-lg" ng-show="itsOn(config.ventiladorMAC)" ng-click="onAtuadorClick(config.ventiladorMAC, config.offStatus)">DESLIGAR</button>
             </div>
             <div class="panel-footer text-footer">VENTILADOR</div>
           </div>
@@ -43,8 +43,8 @@
         <div class="col-sm-4">
           <div class="panel panel-default">
             <div class="panel-body text-center">
-              <button class="btn btn-success btn-lg" ng-show="itsOn(config.bombaMAC)" ng-click="onAtuadorClick(config.bombaMAC, config.onStatus)">LIGAR</button>
-              <button class="btn btn-danger btn-lg" ng-show="!itsOn(config.bombaMAC)" ng-click="onAtuadorClick(config.bombaMAC, config.offStatus)">DESLIGAR</button>
+              <button class="btn btn-success btn-lg" ng-show="!itsOn(config.bombaMAC)" ng-click="onAtuadorClick(config.bombaMAC, config.onStatus)">LIGAR</button>
+              <button class="btn btn-danger btn-lg" ng-show="itsOn(config.bombaMAC)" ng-click="onAtuadorClick(config.bombaMAC, config.offStatus)">DESLIGAR</button>
             </div>
             <div class="panel-footer text-footer">BOMBA</div>
           </div>
@@ -52,8 +52,8 @@
         <div class="col-sm-4">
           <div class="panel panel-default">
             <div class="panel-body text-center">
-              <button class="btn btn-success btn-lg" ng-show="itsOn(config.iluminacaoMAC)" ng-click="onAtuadorClick(config.iluminacaoMAC, config.onStatus)">LIGAR</button>
-              <button class="btn btn-danger btn-lg" ng-show="!itsOn(config.iluminacaoMAC)" ng-click="onAtuadorClick(config.iluminacaoMAC, config.offStatus)">DESLIGAR</button>
+              <button class="btn btn-success btn-lg" ng-show="!itsOn(config.iluminacaoMAC)" ng-click="onAtuadorClick(config.iluminacaoMAC, config.onStatus)">LIGAR</button>
+              <button class="btn btn-danger btn-lg" ng-show="itsOn(config.iluminacaoMAC)" ng-click="onAtuadorClick(config.iluminacaoMAC, config.offStatus)">DESLIGAR</button>
             </div>
             <div class="panel-footer text-footer">ILUMINAÇÃO</div>
           </div>
