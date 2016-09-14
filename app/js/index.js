@@ -13,7 +13,7 @@ const config = {
 
 angular.module('app', ['ngMQTT']);
 
-app.config(['MQTTProvider', function(MQTTProvider){
+angular.module('app').config(['MQTTProvider', function(MQTTProvider){
   MQTTProvider.setHref(config.address);
 }]);
 
