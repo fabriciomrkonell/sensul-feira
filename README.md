@@ -1,2 +1,0 @@
-# sensul-feira
-Sensul.
