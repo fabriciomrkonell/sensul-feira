@@ -4,12 +4,22 @@
 
 .text-footer {
 	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
 }
 
 .text-body {
+	font-size: 50px;
 	text-align: center;
 }
 
 .text-body span {
-	font-size: 30px;
+	font-size: 20px;
+	margin-left: 5px;
+}
+
+.img-responsive {
+	display: initial;
+	max-width: 350px;
+	margin-bottom: 5px;
 }
