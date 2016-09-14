@@ -34,6 +34,7 @@ angular.module('app').controller('ctrl', ['$scope', 'MQTTService', function($sco
 	$scope.atuator[config.iluminacaoMAC] = config.offStatus;
 
 	MQTTService.on(config.eventMQTTName, function(data){
+		if(typeof mac === 'string') data = JSON.parse(data);
 		var mac = data.mac;
 		switch(mac) {
 	    case sensorMAC:
