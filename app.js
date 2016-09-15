@@ -16,7 +16,7 @@ client.on('connect', function () {
 });
 
 client.on('message', function(topic, message) {
-	if(message.toString().length === 3) return false;
+	if(message.toString().split(',').length === 2) return false;
 	console.log(JSON.parse(message.toString()));
  	io.emit('automation', JSON.parse(message.toString()));
 });
