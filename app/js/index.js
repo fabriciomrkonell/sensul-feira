@@ -37,7 +37,7 @@ angular.module('app').controller('ctrl', ['$scope', function($scope) {
 	$scope.atuator[config.iluminacaoMAC] = config.offStatus;
 
 	socket.on(config.eventMQTTName, function(data){
-    var mac = data.mac;
+    var mac = data.mac.toString();
 		switch(mac) {
 	    case config.sensorMAC:
 	    	angular.extend($scope.sensor, {

@@ -16,8 +16,9 @@ client.on('connect', function () {
 });
 
 client.on('message', function(topic, message) {
-	if(message.length === 3) return false;
-  io.emit('automation', JSON.parse(message.toString()));
+	if(message.toString().length === 3) return false;
+	console.log(JSON.parse(message.toString()));
+ 	io.emit('automation', JSON.parse(message.toString()));
 });
 
 io.on('connection', function(socket){
@@ -29,3 +30,7 @@ io.on('connection', function(socket){
 http.listen(3000, function(){
 	console.log('Sensul Feira started.');
 });
+
+setInterval(function(){
+	client.publish('automation', '{"mac": 0, "h": 2 }');
+}, 1000);
