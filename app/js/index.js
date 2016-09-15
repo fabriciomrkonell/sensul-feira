@@ -4,20 +4,23 @@ const config = {
 	eventMQTTName: 'automation',
 	onStatus: 1,
 	offStatus: 2,
-	address: 'ws://localhost:1883',
 	ventiladorMAC: '3',
 	bombaMAC: '2',
 	iluminacaoMAC: '1',
 	sensorMAC: '0'
 };
 
-angular.module('app', ['ngMQTT']);
+var socket = io();
 
-angular.module('app').config(['MQTTProvider', function(MQTTProvider){
-  MQTTProvider.setHref(config.address);
-}]);
+angular.module('app', []);
 
-angular.module('app').controller('ctrl', ['$scope', 'MQTTService', function($scope, MQTTService) {
+angular.module('app').controller('ctrl', ['$scope', function($scope) {
+
+	function refresh(){
+		if (!$scope.$$phase) {
+    	$scope.$apply();
+		}
+	};
 
 	angular.extend($scope, {
 		config: config,
@@ -33,11 +36,10 @@ angular.module('app').controller('ctrl', ['$scope', 'MQTTService', function($sco
 	$scope.atuator[config.bombaMAC] = config.offStatus;
 	$scope.atuator[config.iluminacaoMAC] = config.offStatus;
 
-	MQTTService.on(config.eventMQTTName, function(data){
-		if(typeof data === 'string') data = JSON.parse(data);
-		var mac = data.mac;
+	socket.on(config.eventMQTTName, function(data){
+    var mac = data.mac;
 		switch(mac) {
-	    case sensorMAC:
+	    case config.sensorMAC:
 	    	angular.extend($scope.sensor, {
 					t: data.t,
 					h: data.h,
@@ -47,6 +49,7 @@ angular.module('app').controller('ctrl', ['$scope', 'MQTTService', function($sco
 	    default:
         $scope.atuator[mac] = parseInt(data.value);
 		}
+		refresh()
   });
 
   $scope.itsOn = function(mac){
@@ -54,8 +57,9 @@ angular.module('app').controller('ctrl', ['$scope', 'MQTTService', function($sco
   };
 
   $scope.onAtuadorClick = function(mac, value){
-  	MQTTService.send(config.eventMQTTName, mac + ',' + value);
+  	socket.emit(config.eventMQTTName, mac + ',' + value);
   	$scope.atuator[mac] = parseInt(value);
+  	refresh();
   };
 
 }]);
