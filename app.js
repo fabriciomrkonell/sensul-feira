@@ -21,10 +21,7 @@ client.on('connect', function () {
 	client.publish('automation', 'Hello mqtt');
 });
 
-client.on('automation', function (topic, message) {
-  console.log('Mensagem recebida!');
-});
-
-client.on('message', function (topic, message) {
-  console.log('Mensagem recebida em mensagem!');
+client.on('message', function(topic, message) {
+  console.log(topic);
+  console.log(message.toString());
 });
